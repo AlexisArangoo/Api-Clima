@@ -48,7 +48,7 @@ function App() {
             setInput(ev.target.input.value)
           }}
         >
-          <input type="text" name='input' autoComplete='off' className={`look-for ${dark ? '' : 'look-for-dark'}`}/>
+          <input placeholder='Busca una ciudad' type="text" name='input' autoComplete='off' className={`look-for ${dark ? '' : 'look-for-dark'}`}/>
           <button className='seach' type='submit' onClick={() => setConfir(true)}>🔍</button>
         </form>
       </div>
