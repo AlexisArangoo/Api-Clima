@@ -146,7 +146,7 @@ button{
   color: white;
 }
 
-.temperatureNum{
+.temperatureNum{ 
   grid-column: 1/span1;
   grid-row: 1/span1;
   text-align: left;
@@ -202,10 +202,12 @@ button{
   display: flex;
   justify-content: start;
   align-items: center;
+  gap: 10px;
 }
 .location > span{
   width: 100%;
-  font-size: 24px;
+  font-size: 20px;
+  font-weight: bold;
 }
 .description{
   text-align: right;

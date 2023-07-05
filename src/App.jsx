@@ -34,7 +34,7 @@ function App() {
     })
     .catch(error => console.error(error))
   }, [input])
-  console.log(datas)
+
   return (
     
     <div className={`body ${dark ? '' : 'body-dark'}`}>

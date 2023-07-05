@@ -49,15 +49,15 @@ const Tarjeta = ({datas, dark, confir}) => {
         setSymbol('C°')
       }
     }
-    console.log(datas)
-    console.log(confir)
+    
     if (confir) {
       setTimeout(() => {
         setData(datas)
-        
+        setCelsius((data.main?.temp)-273.15)
+        setFahrenheit((((data.main?.temp)-273.15) * 9/5) + 32)
       }, 100);
     }
-    console.log(datas)
+   
     return(
         <div>
           <div className={`card ${dark ? '' : 'card-dark'}`}>
