@@ -1,6 +1,6 @@
 
 import axios from 'axios'
-import './App.css'
+import './App.css' 
 import Tarjeta from './components/Tarjeta'
 import { useState, useEffect } from 'react'
 import Loader from './components/Loader'
@@ -22,11 +22,24 @@ function App() {
     }
   }
 
-  setTimeout(() => {
-    setLoader(false)
-  }, 2000);
 
   useEffect(() => {
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        () => {
+          setTimeout(() => {
+            setLoader(false)
+          }, 100);
+        },
+        () => {
+          setLoader(true)
+        }
+      )
+    } else {
+      setLoader(true)
+    }
+
     axios
     .get(`https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=79d3bdc6b53d4af133740dcb82431d13&lang=es`)
     .then(resp => {

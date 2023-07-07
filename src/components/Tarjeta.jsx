@@ -1,6 +1,6 @@
 import { useState ,useEffect } from "react"
 import axios from "axios"
-
+ 
 const Tarjeta = ({datas, dark, confir}) => {
   
   const [celsius,setCelsius] = useState(0)
@@ -28,7 +28,7 @@ const Tarjeta = ({datas, dark, confir}) => {
       navigator.geolocation.getCurrentPosition((position) => {
     
         axios
-         .get(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&lang=es`)
+         .get(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude || 0}&lon=${position.coords.longitude || 0}&appid=${apiKey}&lang=es`)
          .then(resp =>{
            setData(resp.data)
            setCelsius((resp.data.main?.temp)-273.15)
