@@ -37,13 +37,17 @@ function App() {
         }
       )
     } else {
-      setLoader(false)
+      setLoader(true)
     }
 
     axios
     .get(`https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=79d3bdc6b53d4af133740dcb82431d13&lang=es`)
     .then(resp => {
       setDatas(resp.data)
+      const noc = resp.data.weather?.[0]?.icon
+           if (noc.includes('n')) {
+            setDark(false)
+           }
     })
     .catch(error => console.error(error))
   }, [input])
@@ -71,6 +75,7 @@ function App() {
       <Tarjeta
       datas={datas}
       dark={dark}
+      setDark={setDark}
       confir={confir}
       />
       

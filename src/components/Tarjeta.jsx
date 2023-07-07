@@ -1,7 +1,7 @@
 import { useState ,useEffect } from "react"
 import axios from "axios"
  
-const Tarjeta = ({datas, dark, confir}) => {
+const Tarjeta = ({datas, dark, setDark, confir}) => {
   
   const [celsius,setCelsius] = useState(0)
   const [fahrenheit, setFahrenheit] =useState(0)
@@ -31,8 +31,14 @@ const Tarjeta = ({datas, dark, confir}) => {
          .get(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude || 0}&lon=${position.coords.longitude || 0}&appid=${apiKey}&lang=es`)
          .then(resp =>{
            setData(resp.data)
+           const noc = resp.data.weather?.[0]?.icon
+           if (noc.includes('n')) {
+            setDark(false)
+           }
            setCelsius((resp.data.main?.temp)-273.15)
            setFahrenheit((((resp.data.main.temp)-273.15) * 9/5) + 32)
+
+           
          })
          .catch(error => console.error(error))   
        })
