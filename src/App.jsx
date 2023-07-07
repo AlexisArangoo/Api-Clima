@@ -37,7 +37,7 @@ function App() {
         }
       )
     } else {
-      setLoader(true)
+      setLoader(false)
     }
 
     axios
